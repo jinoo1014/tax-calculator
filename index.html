@@ -610,6 +610,7 @@ a.brand:active { opacity: .8; }
 }
 .disc-b b { color: var(--text); font-weight: 700; }
 .copybar { margin-top: 12px; }
+.foot .ver { font-size: 11px; color: #9aa8b8; letter-spacing: .04em; }
 
 /* ---------- 규제지역·권역 찾기 (지도) — 화면 전용 스코프 ---------- */
 #view-region {--ink:#1f2937;--over:#d1604e;--over-d:#a4432f;--grow:#e0a03c;--grow-d:#b5771d;--nat:#3f9f78;--nat-d:#26775a;--out:#9aa7b4;--out-d:#77848f;--mix:#8b6fc4;--mix-d:#6a4fa3;--sudo:#3f6fb5;--sudo-d:#2a5290;--reg:#c0392b;--reg-d:#93271b;--regp:#e08a5a;--regp-d:#b25f31;--none:#b9c2cc;--none-d:#98a2ad;}
@@ -779,10 +780,7 @@ a.brand:active { opacity: .8; }
 #view-region .note b {color:#8a6100}
 #view-region .note.warn {border-left-color:#d93025;background:#fff7f6;color:#6b3330}
 #view-region .note.warn b {color:#b3261e}
-@media (max-width:430px){
-  .tile .tn{font-size:10.5px}
-  .board{gap:5px}
-  .dr{grid-template-columns:84px 1fr}
+@media (max-width:430px){#view-region .tile .tn{font-size:10.5px}#view-region .board{gap:5px}#view-region .dr{grid-template-columns:84px 1fr}
 }
 #view-region .acq {margin-top:12px;padding:12px;border:1px solid #e2e8f1;border-radius:11px;background:#f8fafd}
 #view-region .acq label {display:block;font-size:12px;font-weight:800;color:var(--navy);margin-bottom:7px}
@@ -825,6 +823,21 @@ a.brand:active { opacity: .8; }
   font-weight:700;color:var(--muted);cursor:pointer;font-family:inherit;white-space:nowrap}
 #view-region .vsw button.on {background:#fff;color:var(--navy);box-shadow:0 1px 2px rgba(20,35,55,.14)}
 #view-region .map .lb.sm3 {font-size:15px;font-weight:700}
+#view-region .roll {display:flex;align-items:baseline;gap:9px;margin:9px 0 8px}
+#view-region .roll .rn {font-size:20px;font-weight:800;color:var(--reg)}
+#view-region .roll .rn b {font-size:24px}
+#view-region .roll .rt {font-size:12.5px;color:var(--ink);line-height:1.5}
+#view-region .rlist {font-size:12px;line-height:1.65;color:var(--ink);padding:8px 10px;
+  background:#fdf1ef;border:1px solid #f2d5d0;border-radius:9px;margin-bottom:6px}
+#view-region .rlist b {display:inline-block;font-size:11px;font-weight:800;color:var(--reg-d);margin-right:5px}
+#view-region .rlist.none {background:#f2f5f8;border-color:#e2e8ef;color:var(--muted)}
+#view-region .rlist.none b {color:var(--muted)}
+#view-region .ltags .t.t-h {background:#fdf1ef;color:var(--reg-d);border-color:#f2d5d0}
+#view-region .maptip .tr.note {color:var(--navy);font-weight:600}
+#view-region .btop .bt {white-space:nowrap}
+#view-region .btop .bs {font-size:12px;line-height:1.45}
+@media (max-width:400px){#view-region .vsw button{padding:6px 9px;font-size:11.5px}
+}
 
 /* 허브 안에서 쓰기 위한 보정 */
 #view-region .rgn { margin-top: 2px; }
@@ -1001,7 +1014,8 @@ a.brand:active { opacity: .8; }
       저작권법에 따라 보호받는 <b>이안세무회계컨설팅</b>의 저작물입니다. 무단 복제·배포·전송을 금합니다.<br>
       다만 인용된 <b>법령·고시·공고 등 원문 자체</b>는 저작권법 제7조에 따라 보호 대상이 아닙니다.</span></div>
 
-    <p class="foot">이안세무회계컨설팅 · 세무사 서진우<br>본 계산기는 참고용 간이 계산 결과로, 실제 신고 세액과 다를 수 있습니다.</p>
+    <p class="foot">이안세무회계컨설팅 · 세무사 서진우<br>본 계산기는 참고용 간이 계산 결과로, 실제 신고 세액과 다를 수 있습니다.
+      <br><span class="ver">v9.3 · 2026-08-06</span></p>
   </div>
 
   <!-- ================================================================
@@ -1822,7 +1836,7 @@ a.brand:active { opacity: .8; }
       <ul>
         <li>근로소득 간이세액표 — 소득세법 제134조, 같은 법 시행령 제194조 및 <b>별표2</b>. <b>2026.3.1. 이후 원천징수하는 분</b>부터 적용</li>
         <li>8세 이상 20세 이하 자녀 세액공제 — 1명 20,830원 / 2명 45,830원 / 3명 이상 45,830원 + 2명 초과 1명당 33,330원. 표의 세액에서 빼고 음수면 0원</li>
-        <li>소득세는 (표 세액 − 자녀공제) × 선택비율 후 <b>10원 미만 버림</b>, 지방소득세는 확정된 소득세의 10%를 원 단위까지</li>
+        <li>소득세는 (표 세액 − 자녀공제) × 선택비율 후 <b>10원 미만 버림</b>. 지방소득세는 확정된 소득세의 10%를 계산한 뒤 <b>다시 10원 미만 버림</b> (국고금 관리법 제47조제1항, 같은 조 제3항에 따라 지방자치단체에 준용)</li>
         <li>80%·120%는 근로자가 원천징수의무자에게 <b>「소득세 원천징수세액 조정신청서」</b>를 제출해 선택합니다. 변경 후에는 재변경 전까지 계속 적용하며, <b>변경한 과세기간에는 재변경할 수 없습니다</b></li>
         <li>월 급여 <b>1,000만원 초과</b> 구간은 표에 정액이 없어 시행령 별표2의 산식으로 계산합니다</li>
         <li><b>산재보험은 넣지 않습니다.</b> 사업주가 전액 부담하는 보험이라 근로자 공제 항목이 아닙니다. 사업주 부담까지 보시려면 4대보험 계산기를 쓰세요</li>
@@ -4098,7 +4112,9 @@ function calcPay(input) {
   const credit = payChildCredit(child);
   const afterChild = Math.max(0, tableTax - credit);
   const incomeTax = Math.floor(afterChild * rate / 100 / 10) * 10;   // 10원 미만 버림
-  const localTax = Math.floor(incomeTax * 0.1);                      // 지방소득세는 원 단위까지
+  // 지방소득세도 10원 미만 끝수를 버린다 — 국고금 관리법 §47①(10원 미만 끝수 계산 안 함),
+  // 같은 조 ③에 따라 지방자치단체에 준용. 전액이 10원 미만이면 전액을 계산하지 않으므로 0원이 된다.
+  const localTax = Math.floor(incomeTax * 0.1 / 10) * 10;
 
   const insSum = pension + healthRaw + ltcRaw + ei;
   const taxSum = incomeTax + localTax;
@@ -4766,7 +4782,7 @@ UPDATE.pay = function () {
       ${sr('장기요양보험', r.ltc, 'sub', '건강보험료 × 13.14%')}
       ${sr('고용보험', r.ei, 'sub', '0.9%' + (r.aidEi ? ` · 두루누리 −${fmt(r.aidEi)}원` : ''))}
       ${sr('소득세', r.incomeTax, 'sub', `간이세액표 ${r.rate}%` + (r.credit ? ` · 자녀공제 −${fmt(r.credit)}원` : ''))}
-      ${sr('지방소득세', r.localTax, 'sub', '소득세의 10%')}
+      ${sr('지방소득세', r.localTax, 'sub', '소득세의 10% · 10원 미만 버림')}
       ${sr('공제 합계', r.deduction, 'line')}
       ${sr('실수령액', r.net, 'line total')}
     </div>
@@ -4779,7 +4795,7 @@ UPDATE.pay = function () {
       ${r.credit ? sr('자녀공제 후', r.afterChild, 'sub') : ''}
       <div class="sr sub"><span class="k">선택 비율</span><span class="v txt">${r.rate}%</span></div>
       ${sr('원천징수 소득세', r.incomeTax, 'line')}
-      <p class="slip-foot">10원 미만은 버립니다. 지방소득세는 확정된 소득세의 10%를 원 단위까지 계산합니다.</p>
+      <p class="slip-foot">소득세와 지방소득세 모두 <b>10원 미만 끝수를 버립니다</b> (국고금 관리법 §47①·③).</p>
     </div>
   ` : '<p class="ins-empty">월 급여액을 입력하면 공제 내역과 실수령액이 명세서처럼 나옵니다.</p>';
 
@@ -4850,6 +4866,7 @@ const OUT = SIDO_ALL.filter(s => !SUDO.includes(s)).map(s => ({
 const ALL = REGION.concat(OUT);
 
 let view = 'nation', layer = 'zone', tilt = true, sel = null;
+let drill = null;   // 전국 지도에서 고른 비수도권 시·도 (목록을 그 시도 시군구로 좁힌다)
 
 /* 전국 지도 라벨 겹침 보정 */
 const LB_SKIP = ['세종특별자치시'];
@@ -4902,7 +4919,7 @@ function svgWrap(inner, vb) {
 function renderNation() {
   view = 'nation';
   $('mapTitle').textContent = '전국';
-  $('mapSub').textContent = '서울·인천·경기를 누르면 시·군·구까지 펼쳐집니다';
+  $('mapSub').textContent = '시·도를 누르면 시·군·구로';
   syncViewBtns();
   const vb = MAP.sido.vb, dy = vb[3] * 0.012;
   let base = '', top = '', lab = '';
@@ -4913,7 +4930,7 @@ function renderNation() {
       ? (s === '서울특별시' ? '#c0392b' : s === '경기도' ? '#e08a5a' : '#c8d0d8')
       : (isSudo ? '#3f6fb5' : '#aab6c2');
     base += '<path d="' + d + '" fill="#59687a" opacity=".55"/>';
-    top += '<path class="rg' + (isSudo ? ' clickable' : '') + '" d="' + d + '" fill="' + f + '" data-sido="' + s + '"/>';
+    top += '<path class="rg clickable" d="' + d + '" fill="' + f + '" data-sido="' + s + '"/>';
     const c = MAP.sido.c[s];
     if (c && !SUDO.includes(s) && LB_SKIP.indexOf(s) < 0) {
       const o = LB_ADJ[s] || [0, 0];
@@ -4955,7 +4972,7 @@ const SEOUL_ADJ = {
 function renderSeoul() {
   view = 'seoul';
   $('mapTitle').textContent = '서울';
-  $('mapSub').textContent = '25개 자치구 — 구를 누르면 아래에 나옵니다';
+  $('mapSub').textContent = '25개 자치구';
   syncViewBtns();
   const rows = CAP.filter(r => r.sidoS === '서울' && MAP.cap.p[r.k]);
   const vb = bboxOf(rows.map(r => MAP.cap.p[r.k]));
@@ -4990,7 +5007,7 @@ function syncViewBtns() {
 function renderCap() {
   view = 'cap';
   $('mapTitle').textContent = '수도권';
-  $('mapSub').textContent = '서울 25 · 인천 10 · 경기 44 — 지역을 누르면 아래에 나옵니다';
+  $('mapSub').textContent = '서울 25 · 인천 10 · 경기 44';
   syncViewBtns();
   const vb = MAP.cap.vb, dy = vb[3] * 0.014;
   let base = '', top = '', lab = '';
@@ -5020,7 +5037,8 @@ function tipHTML(r) {
   return '<b>' + (r.isSido ? r.nm : r.sidoS + ' ' + r.nm) + '</b>' +
     '<span class="tz">' + (z.length ? z.map(x =>
       '<i style="background:' + ZCOL[x] + '"></i>' + x.replace('권역', '')).join('') : '수도권 외') + '</span>' +
-    (r.jo || r.tuha || r.thg || r.tuji ? '<span class="tr">' +
+    (r.tipNote ? '<span class="tr note">' + r.tipNote + '</span>' :
+     r.jo || r.tuha || r.thg || r.tuji ? '<span class="tr">' +
       (r.jo ? '조정' + (r.jo === 2 ? '(일부)' : '') + ' ' : '') +
       (r.tuha ? '투기과열' + (r.tuha === 2 ? '(일부)' : '') + ' ' : '') +
       (r.thg ? '토허 ' : '') + (r.tuji ? '투기지역' : '') + '</span>' : '<span class="tr none">규제지역 아님</span>');
@@ -5037,21 +5055,43 @@ function showTip(e, r) {
 }
 function hideTip() { TIP.classList.remove('on'); }
 
+/* 전국 지도 툴팁용 시·도 요약 */
+function sidoTip(sd) {
+  const rows = REGION.filter(r => r.sido === sd);
+  const ever = rows.filter(r => (r.hist || []).length).length;
+  return {
+    nm: sd.replace(/(특별자치시|특별자치도|특별시|광역시|도)$/, ''), sidoS: '', nonSudo: true, isSido: true,
+    z: [], sudo: SUDO.includes(sd),
+    tipNote: SUDO.includes(sd) ? '눌러서 시·군·구 펼치기'
+      : ever ? '조정대상지역 이력 ' + ever + '곳 — 눌러서 목록 보기'
+             : '조정대상지역 이력 없음',
+  };
+}
+
 function bind() {
   hideTip();
   document.querySelectorAll('#mapBox .clickable').forEach(el => {
-    const r = el.dataset.k ? BY[el.dataset.k]
-      : { nm: el.dataset.sido.replace(/(특별자치시|특별자치도|특별시|광역시|도)$/, ''), sidoS: '', nonSudo: true,
-          z: [], sudo: SUDO.includes(el.dataset.sido) };
+    const r = el.dataset.k ? BY[el.dataset.k] : sidoTip(el.dataset.sido);
     el.addEventListener('mousemove', (e) => showTip(e, r));
     el.addEventListener('mouseleave', hideTip);
   });
   $('mapWrap').addEventListener('mouseleave', hideTip);
   document.querySelectorAll('#mapBox .clickable').forEach(p => p.addEventListener('click', () => {
     if (p.dataset.sido) {
-      if (view === 'nation') {
-        const go = p.dataset.sido === '서울특별시' ? renderSeoul : renderCap;
-        sel = null; swap(() => { go(); detail(null); renderList(); });
+      if (view !== 'nation') return;
+      const sd = p.dataset.sido;
+      if (SUDO.includes(sd)) {
+        const go = sd === '서울특별시' ? renderSeoul : renderCap;
+        drill = null; sel = null; swap(() => { go(); detail(null); renderList(); });
+      } else {
+        // 비수도권은 시군구 경계를 갖고 있지 않아 지도로 파고들 수 없다.
+        // 대신 목록을 그 시·도의 시군구로 좁혀서 눌러 들어갈 수 있게 한다.
+        drill = sd; sel = null;
+        listFilter = 'all';
+        renderList();
+        openList();
+        detail(sidoSummary(sd));
+        $('listCard').scrollIntoView({ behavior: 'smooth', block: 'start' });
       }
       return;
     }
@@ -5146,6 +5186,26 @@ function acqBox(r) {
     '읍·면이나 택지지구 단위로 범위가 갈리는 지역은 위 연혁의 단서를 함께 보셔야 합니다.</p></div>';
 }
 
+/* 시·도 요약 — 그 안에서 조정대상지역 이력이 있는 시군구를 짚어 준다 */
+function sidoRollBox(r) {
+  const s = r.sidoRoll;
+  if (!s.ever) {
+    return '<div class="dnote hist"><b>' + r.nm + ' — 조정대상지역 이력</b><br>' +
+      '이 시·도의 <b>' + s.n + '개 시·군·구 모두</b> 조정대상지역으로 지정된 적이 없습니다.' +
+      '<div class="hlaw">아래 목록에서 시·군·구를 누르면 각각의 상세와 취득일 조회로 들어갑니다.</div></div>';
+  }
+  const cap = s.names.slice(0, 20).join(' · ') + (s.names.length > 20 ? ' 외 ' + (s.names.length - 20) + '곳' : '');
+  return '<div class="dnote hist"><b>' + r.nm + ' — 조정대상지역 이력</b>' +
+    '<div class="roll"><span class="rn"><b>' + s.ever + '</b>/' + s.n + '</span>' +
+    '<span class="rt">개 시·군·구에 지정 이력이 있습니다' +
+    (s.now ? ' (현재 지정 <b>' + s.now + '곳</b>)' : ' (현재는 전부 해제)') + '</span></div>' +
+    '<div class="rlist"><b>이력 있음</b> ' + cap + '</div>' +
+    (s.none.length ? '<div class="rlist none"><b>이력 없음</b> ' +
+      (s.none.length > 12 ? s.none.length + '곳' : s.none.join(' · ')) + '</div>' : '') +
+    '<div class="hlaw">취득 당시 조정대상지역이었는지는 <b>시·군·구별로</b> 달라집니다. ' +
+    '아래 목록에서 해당 시·군·구를 눌러 연혁과 취득일 조회를 확인하세요.</div></div>';
+}
+
 /* 필지 단위 항목 — 지도로 판정 불가, 지번 조회 안내 */
 const PARCEL =
   '<div class="dnote parcel"><b>여기서는 알 수 없는 것 — 지번으로 확인하셔야 합니다</b><br>' +
@@ -5172,6 +5232,17 @@ function detail(r) {
     L.push(['대도시', isOver ? (z.length > 1 ? '일부 해당' : '해당') : '해당 없음',
       '지방세법 §13② — 과밀억제권역(산업단지 제외)']);
   }
+  // 시·도 요약 화면에서는 규제지역 표를 빼고 요약 카드만 보여준다.
+  // 시도 단위로 '미지정'이라 적으면 그 안의 시군구까지 전부 아닌 것처럼 읽힌다.
+  if (r.sidoRoll) {
+    el.innerHTML =
+      '<div class="dhead"><div class="dn">' + r.nm + '</div></div>' +
+      '<div class="dbadges">' + badges(r) + '</div>' +
+      '<div class="dtable"><div class="dr"><span class="dk">수도권</span>' +
+      '<span class="dv">수도권 외</span><span class="ds">수도권정비계획법 §2 1호에 해당하지 않습니다</span></div></div>' +
+      sidoRollBox(r) + PARCEL + '<div class="dasof">기준일 ' + AS_OF + '</div>';
+    return;
+  }
   const everJo = (r.hist || []).length > 0;
   L.push(['조정대상지역', r.jo === 1 ? '지정' : r.jo === 2 ? '일부 지정' : '미지정',
     r.since || (everJo && !r.jo ? '지금은 미지정이지만 과거 지정 이력이 있습니다 — 아래 연혁 참조'
@@ -5191,6 +5262,7 @@ function detail(r) {
       '<div class="dr"><span class="dk">' + k + '</span><span class="dv' +
       (/^(지정|해당|수도권)$/.test(v) ? ' hit' : /일부/.test(v) ? ' part' : '') + '">' + v +
       '</span><span class="ds">' + s + '</span></div>').join('') + '</div>' +
+    (r.sidoRoll ? sidoRollBox(r) : '') +
     (r.isSido ? '' : histBox(r)) +
     (r.note ? '<div class="dnote"><b>동·읍면 단위로 갈립니다</b><br>' + r.note + '</div>' : '') +
     (r.joNote ? '<div class="dnote reg"><b>규제지역 범위</b><br>' + r.joNote + '</div>' : '') +
@@ -5202,6 +5274,23 @@ function detail(r) {
   if (ad) ad.addEventListener('change', () => { acqDate = ad.value; detail(r); });
   const ax = $('acqClear');
   if (ax) ax.addEventListener('click', () => { acqDate = ''; detail(r); });
+}
+
+/* 비수도권 시·도를 골랐을 때 보여줄 요약 — 그 시도 안에서 조정대상지역 이력이 있는 곳을 세어 준다 */
+function sidoSummary(sd) {
+  const rows = REGION.filter(r => r.sido === sd);
+  const ever = rows.filter(r => (r.hist || []).length);
+  const now = rows.filter(r => r.jo);
+  return {
+    k: sd, nm: sd, sido: sd, sidoS: sd.replace(/(특별자치시|특별자치도|특별시|광역시|도)$/, ''),
+    sudo: false, nonSudo: true, isSido: true, z: [], hist: [],
+    sidoRoll: { n: rows.length, ever: ever.length, now: now.length,
+                names: ever.map(r => r.nm), none: rows.filter(r => !(r.hist || []).length).map(r => r.nm) },
+  };
+}
+function openList() {
+  $('listCard').classList.add('open');
+  $('listToggle').textContent = '접기 ▲';
 }
 
 /* ---------------- 지역 목록 ---------------- */
@@ -5240,10 +5329,13 @@ function zdots(r) {
   return z.map(x => '<span class="zd" style="background:' + ZCOL[x] + '"></span>').join('');
 }
 function renderList() {
-  const src = view === 'seoul' ? CAP.filter(r => r.sidoS === '서울') : view === 'cap' ? CAP : ALL;
+  const src = drill ? REGION.filter(r => r.sido === drill)
+    : view === 'seoul' ? CAP.filter(r => r.sidoS === '서울')
+    : view === 'cap' ? CAP : ALL;
   const rows = src.filter(r => match(r, listFilter));
   $('listCnt').textContent = rows.length + '곳';
-  $('listTitle').textContent = view === 'seoul' ? '서울 자치구 목록' : view === 'cap' ? '수도권 지역 목록' : '전국 지역 목록';
+  $('listTitle').textContent = drill ? drill + ' 시·군·구'
+    : view === 'seoul' ? '서울 자치구 목록' : view === 'cap' ? '수도권 지역 목록' : '전국 지역 목록';
   $('listBody').innerHTML = rows.length ? rows.map(r =>
     '<button class="lrow' + (sel && sel.k === r.k ? ' on' : '') + '" data-go2="' + r.k + '">' +
     '<span class="ldot">' + zdots(r) + '</span>' +
@@ -5254,12 +5346,14 @@ function renderList() {
       (r.tuha ? '<i class="t t-r">투기과열' + (r.tuha === 2 ? '·일부' : '') + '</i>' : '') +
       (r.thg ? '<i class="t t-p">토허' + (r.thg === 2 ? '·일부' : '') + '</i>' : '') +
       (r.tuji ? '<i class="t t-d">투기지역</i>' : '') +
+      (!r.jo && (r.hist || []).length ? '<i class="t t-h">조정 이력</i>' : '') +
       ((r.z || []).includes(Z.OVER) ? '<i class="t t-n">대도시' + ((r.z || []).length > 1 ? '·일부' : '') + '</i>' : '') +
     '</span></button>').join('')
     : '<div class="dempty">해당하는 지역이 없습니다</div>';
   $('listBody').querySelectorAll('[data-go2]').forEach(b => b.addEventListener('click', () => {
     const r = ALL.find(x => x.k === b.dataset.go2);
     const want = r.sidoS === '서울' ? 'seoul' : r.sudo ? 'cap' : 'nation';
+    if (r.sudo) { drill = null; }
     if (r.sudo && view !== want) { sel = r; swap(() => { RENDER[want](); pick(r); renderList(); }); }
     else if (r.sudo) { pick(r); renderList(); }
     else { detail(r); sel = null; renderList(); }
@@ -5292,8 +5386,12 @@ function search() {
     const r = ALL.find(x => x.k === b.dataset.go);
     if (r.sudo) {
       const want = r.sidoS === '서울' ? 'seoul' : 'cap';
-      sel = r; swap(() => { RENDER[want](); pick(r); renderList(); });
-    } else { sel = null; swap(() => { renderNation(); detail(r); renderList(); }); }
+      drill = null; sel = r; swap(() => { RENDER[want](); pick(r); renderList(); });
+    } else {
+      drill = r.isSido ? null : r.sido;     // 시군구면 그 시도 목록으로 좁혀 둔다
+      sel = null;
+      swap(() => { renderNation(); detail(r); renderList(); });
+    }
     box.classList.remove('on'); box.innerHTML = ''; $('q').value = '';
     $('detailCard').scrollIntoView({ behavior: 'smooth', block: 'center' });
   }));
@@ -5309,7 +5407,8 @@ if (srcT) srcT.addEventListener('click', () => $('srcCard').classList.toggle('op
 
 document.querySelectorAll('[data-view]').forEach(b => b.addEventListener('click', () => {
   const v = b.dataset.view;
-  if (v === view) return;
+  if (v === view && !drill) return;
+  drill = null;
   swap(() => { RENDER[v](); renderList(); });
 }));
 document.querySelectorAll('[data-layer]').forEach(b => b.addEventListener('click', () => {
